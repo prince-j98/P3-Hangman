@@ -79,16 +79,20 @@ def fig():
 guess_list = [" "]
 # Running the functions
 while mistakes <= max_mistakes:
-    # ask for user's guess
-    guess = str(input("Please enter your guess (only alphabets): ")).upper()
+        # ask for user's guess
+    guess = input("Please enter your guess (only alphabets): ").upper()
+
     if len(guess) != 1:                         # length of input should not be more than 1 letter
         print("Please enter only one alphabet digit! \n")
         continue
     if guess_list.count(guess) != 0:            # guesses should not be repeated
         print("Please enter a new letter. This has been guessed before.\n")
         continue
+    if guess.isdigit():                         # no digit inputs allowed
+        print("You entered a number. Only alphabets are allowed. \n")
+        continue
     guess_list.extend(guess)
-    print(guess_list)
+
 
     scan()
     print("Word: " + ''.join(empty_list) + "\n")
